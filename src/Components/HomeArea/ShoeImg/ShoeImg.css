@@ -1,0 +1,25 @@
+.ShoeImg {
+
+   
+}
+
+
+.ShoeImg > img {
+   
+    width: 100px;
+    padding: 3px;
+    border: 1px solid;
+}
+
+/* .ShoeImg {
+	height: 10%;
+    padding: 3px;
+    border: 1px solid black;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+.ShoeImg > img {
+    height: 100%;
+} */
