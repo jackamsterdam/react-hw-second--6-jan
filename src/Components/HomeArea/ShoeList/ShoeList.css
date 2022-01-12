@@ -1,4 +1,4 @@
-.ShoeList > li {
+.ShoeList {
 	list-style-type:none;
     padding: 10px
 }

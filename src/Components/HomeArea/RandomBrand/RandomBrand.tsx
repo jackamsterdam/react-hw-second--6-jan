@@ -1,5 +1,6 @@
 import "./RandomBrand.css";
 import {useState, useEffect} from 'react'
+import ShoeList from "../ShoeList/ShoeList";
 
 function RandomBrand(): JSX.Element {
     const [shoe, setShoe] = useState('נעל ראשונה')

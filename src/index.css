@@ -21,3 +21,8 @@ html, body, #root {
 a {
   color: blue;
 }
+
+main {
+  overflow-y: scroll;
+  /* overflow-y: auto; */
+}
