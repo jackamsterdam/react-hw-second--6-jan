@@ -1,0 +1,9 @@
+.ProductDetails {
+	
+}
+
+
+.ProductDetails button:hover {
+    transform: scale(0.98);
+    cursor: pointer;
+}

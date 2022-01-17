@@ -1,4 +1,4 @@
-.ProductCard.Box {
+.ProductCard .Box{
 	display: inline-flex;
     /* flex-direction: column-reverse; */
     align-items: center;

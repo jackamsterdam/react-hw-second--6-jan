@@ -5,6 +5,8 @@ import axios from "axios";
 import config from '../../../Utils/Config'
 import ProductCard from '../ProductCard/ProductCard'
 import { isFunctionOrConstructorTypeNode } from "typescript";
+import Loading from "../../SharedArea/Loading/Loading";
+import { NavLink } from "react-router-dom";
 // מישהו בנה את ייוזסטייט והוא בנה אותה ג,נרית 
 // so someone builds a class makes it generic and then when we use it I say what type of data it is 
 //so somone built useState made it generic and we i guess if its a calss we use an instawnce of it and give it the type we want in this case its IProduct[] 
@@ -30,8 +32,11 @@ function ProductList(): JSX.Element {
 
 
     return (
-
         <div className="ProductList">
+            {!products.length && <Loading/>}
+
+             <NavLink to="/products/new">➕</NavLink>
+
 			{/* <p>product goes here </p> */}
             {products.map((product:IProduct) =>  <ProductCard key={product.id} product={product} /> )}
            
