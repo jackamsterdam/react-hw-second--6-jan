@@ -10,6 +10,7 @@ import ProductDetails from "../../ProductsArea/ProductDetails/ProductDetails";
 import AddProduct from "../../ProductsArea/AddProduct/AddProduct";
 import EmployeeDetails from "../../EmployeesArea/EmployeeDetails/EmployeeDetails";
 import AddEmployee from "../../EmployeesArea/AddEmployee/AddEmployee";
+import ShoeOrder from '../../OrdersArea/ShoeOrder/ShoeOrder'
 
 function Routing(): JSX.Element {
     return (
@@ -25,7 +26,7 @@ function Routing(): JSX.Element {
           <Route path="products/new" element={<AddProduct/>} />
           <Route path="employees/new" element={<AddEmployee />} />
 
-
+          <Route path="shoeOrder" element ={<ShoeOrder/>} />
 
           <Route path="/success-stories" element={<SuccessStories/>} />
           <Route path="/about" element={<About/>} />

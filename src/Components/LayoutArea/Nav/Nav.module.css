@@ -1,0 +1,23 @@
+/* .Nav {
+	display: flex;
+    flex-direction: column;
+    
+
+}
+
+.Nav > a {
+    margin-top: 20px;
+} */
+
+/* with css modules:  */
+
+.CoolText {
+	display: flex;
+    flex-direction: column;
+    
+
+}
+
+.CoolText a  {
+    margin-top: 20px;
+}

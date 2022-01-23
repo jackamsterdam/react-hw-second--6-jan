@@ -20,15 +20,34 @@ const [product, setProduct] = useState<IProduct>()
 const navigate = useNavigate()
 
 useEffect(() => {
-    axios.get<IProduct>(config.productsUrl + id)
+    try {
+         axios.get<IProduct>(config.productsUrl + id)
     .then(response => {
         setProduct(response.data)
     })
     .catch((err: any) => {
         console.log(err.message)
     })
+    } catch(err: any) {
+        alert(err.message)
+    }
+   
 
 }, [])
+
+async function deleteProduct() {
+    try {
+
+        const confirmDelete = window.confirm('האם אתה בטוח?')
+        if (!confirmDelete) return
+        await axios.delete(config.productsUrl + id)
+        alert('המוצר נמחק')
+    
+        navigate('/products')
+    } catch(err: any) {
+        alert(err.message)
+    }
+}
 
 
 
@@ -52,6 +71,7 @@ useEffect(() => {
                     <br />
                     <br />
                     <button onClick={() => navigate(-1)}>Go back with useNavigate</button>
+                    <button onClick={deleteProduct}>למחוק</button>
                     </>
 
           }

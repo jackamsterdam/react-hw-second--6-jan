@@ -14,3 +14,9 @@ margin: 0 0 20px 0;
     margin: 10px 0 20px 0;
     
 }
+
+.AddEmployee span {
+    color: red;
+    margin: 0 20px;
+    position: absolute;
+}

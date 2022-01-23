@@ -12,3 +12,46 @@
     width: 100%;
     margin: 10px 0 20px 0;
 }
+
+.AddProduct span {
+    color: red;
+    margin: 0 20px;
+    position: absolute;
+}
+
+
+/* after i changed it with Material UI:  */
+.AddProduct form .Headline {
+    text-align: center;
+}
+.AddProduct form > .TextBox {
+    width: 100%;
+    margin: 5px 0;
+    text-align: right;
+}
+.AddProduct form .MoveLeft {
+    margin-right: 50px;
+}
+
+
+
+/* form  {
+	width: 250px;
+}
+
+input {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 0 20px 0;
+}
+
+button {
+    width: 100%;
+    margin: 10px 0 20px 0;
+}
+
+span {
+    color: red;
+    margin: 0 20px;
+    position: absolute;
+} */

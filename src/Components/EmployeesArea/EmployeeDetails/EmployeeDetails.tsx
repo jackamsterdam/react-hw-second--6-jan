@@ -20,12 +20,26 @@ function EmployeeDetails(): JSX.Element {
 
   
   useEffect(() => {
-   (async function() {
-       const response = await axios.get<IEmployee>(config.employeeUrl + id)
-       setEmployee(response.data)
+      try {
 
-   })()
+          (async function() {
+              const response = await axios.get<IEmployee>(config.employeeUrl + id)
+              setEmployee(response.data)
+       
+          })()
+      }
+      catch(err: any) {
+          alert(err.message)
+      }
   }, [])
+
+  async function deleteProduct() {
+      const confirmDelete = window.confirm('האם אתה בטוח?')
+      if (!confirmDelete) return 
+      await axios.delete(config.employeeUrl + id)
+      alert('העובד/ת נמחק/ה')
+      navigate('/employees')
+  }
 
 
 
@@ -53,7 +67,7 @@ function EmployeeDetails(): JSX.Element {
             <br />
             {/* if user manually types in adress bar something employee id not there than problem */}
             <button onClick={() => {navigate(-1)}}>Go Back with useNavigate</button>
-           
+            <button onClick={deleteProduct}>למחוק עובד</button>
             
             
             </>

@@ -4,7 +4,6 @@ import {useState, useEffect}  from 'react'
 import axios from "axios";
 import config from '../../../Utils/Config'
 import ProductCard from '../ProductCard/ProductCard'
-import { isFunctionOrConstructorTypeNode } from "typescript";
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
 // מישהו בנה את ייוזסטייט והוא בנה אותה ג,נרית 

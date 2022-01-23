@@ -8,6 +8,7 @@ export interface IEmployee {
     city: string
     birthDate: number 
     imageName: string
+    image: FileList |any
 
 
 }

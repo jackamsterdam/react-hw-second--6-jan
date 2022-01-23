@@ -1,0 +1,15 @@
+.ShoeOrder form {
+	width: 350px;
+    margin: 20px;
+    padding: 20px; 
+   
+}
+
+.ShoeOrder form  > .Headline {
+  text-align: center;
+}
+
+.ShoeOrder form > .TextBox {
+    width: 100%;
+    margin: 5px 0;
+}
