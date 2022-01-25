@@ -6,6 +6,7 @@ import config from '../../../Utils/Config'
 import ProductCard from '../ProductCard/ProductCard'
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
+import productsService from '../../../Services/ProductsService'
 // מישהו בנה את ייוזסטייט והוא בנה אותה ג,נרית 
 // so someone builds a class makes it generic and then when we use it I say what type of data it is 
 //so somone built useState made it generic and we i guess if its a calss we use an instawnce of it and give it the type we want in this case its IProduct[] 
@@ -21,10 +22,21 @@ function ProductList(): JSX.Element {
     useEffect(() => {
    //get has the concecpt of generic also .. the server doesnt know what type of array you have as products ..it needs to match the data you get from server. (axios.get default is any ..se we better tell it what tyep of data we are getting. and its the same as before an array of IProduct[])
    //so the data we get form server is the same as the what we are keeping in useState
-        (async function() {
-                  const response = await axios.get<IProduct[]>(config.productsUrl)
-                  setProducts(response.data)
-        })()
+
+
+
+// lets take this out to Services  OLD: 
+        // (async function() {
+        //           const response = await axios.get<IProduct[]>(config.productsUrl)
+        //           setProducts(response.data)
+        // })()
+
+        // new: 
+        productsService.fetchProducts()
+        .then(products => setProducts(products))
+        .catch(err => alert(err.message))
+
+
     }, [])
 
 //SO THERE IS PROTECTION ONE PROGRAMMER WROTE AXIOS.GET<STRING[]> AND THEN THE USESTATE CANT GET THAT SO THROWS ERROR SO NOW PROGRAMMER KNOWS HE MADE A MISTAKE SO ts IS GOOD.

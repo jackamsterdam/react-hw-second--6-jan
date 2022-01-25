@@ -6,12 +6,13 @@ import config from "../../../Utils/Config";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
+import employeesService from "../../../Services/EmployeesService";
 
 function EmployeeDetails(): JSX.Element {
 
     const param = useParams()
     console.log("param.id", param.id);
-    const id = param.id
+    const id = Number(param.id)
     
 
 
@@ -20,23 +21,38 @@ function EmployeeDetails(): JSX.Element {
 
   
   useEffect(() => {
-      try {
+    //   try {
 
-          (async function() {
-              const response = await axios.get<IEmployee>(config.employeeUrl + id)
-              setEmployee(response.data)
+        // Old: 
+        //   (async function() {
+        //       const response = await axios.get<IEmployee>(config.employeeUrl + id)
+        //       setEmployee(response.data)
        
-          })()
-      }
-      catch(err: any) {
-          alert(err.message)
-      }
+        //   })()
+
+        // new: 
+        employeesService.getOneEmployee(id)
+        .then(employee => setEmployee(employee))
+        .catch(err => alert(err.message))
+//!Again catch/????????????????????????????????????????????
+    //   }
+    //   catch(err: any) {
+    //       alert(err.message)
+    //   }
   }, [])
 
   async function deleteProduct() {
       const confirmDelete = window.confirm('האם אתה בטוח?')
       if (!confirmDelete) return 
-      await axios.delete(config.employeeUrl + id)
+
+    //   old: 
+    //   await axios.delete(config.employeeUrl + id)
+    //new
+    /* The below code is making a call to the deleteEmployee method of the employeesService. */
+    await employeesService.deleteEmployee(id)
+    //! what about try catch here ??? 
+
+
       alert('העובד/ת נמחק/ה')
       navigate('/employees')
   }
@@ -66,10 +82,10 @@ function EmployeeDetails(): JSX.Element {
             <br />
             <br />
             {/* if user manually types in adress bar something employee id not there than problem */}
-            <button onClick={() => {navigate(-1)}}>Go Back with useNavigate</button>
+            <button onClick={() => navigate(-1)}>Go Back with useNavigate</button>
             <button onClick={deleteProduct}>למחוק עובד</button>
             
-            
+            <button onClick={() => navigate('/employees/edit/' + employee.id)}>Edit</button>
             </>
             }
         </div>

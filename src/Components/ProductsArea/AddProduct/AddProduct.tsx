@@ -6,6 +6,7 @@ import config from "../../../Utils/Config";
 import "./AddProduct.css";
 // import css from  "./AddProduct.module.css";
 import {Typography, TextField, Button} from '@material-ui/core'
+import productsService from "../../../Services/ProductsService";
 
 function AddProduct(): JSX.Element {
 
@@ -17,21 +18,28 @@ async function submit(product: IProduct) {
 
     try {                   
 
-        const formData = new FormData()
-        formData.append('name', product.name)
-        formData.append('price', product.price.toString())
-        formData.append('stock', product.stock.toString())
-        formData.append('image', product.image.item(0))
+
+
+        // old: 
+    //     const formData = new FormData()
+    //     formData.append('name', product.name)
+    //     formData.append('price', product.price.toString())
+    //     formData.append('stock', product.stock.toString())
+    //     formData.append('image', product.image.item(0))
       
 
-       console.log(product)
-    //   this line is sufficient:  await axios.post<IProduct>(config.productsUrl, product)
-                  //in the generic I tell what the server will give me back (not what Im sending)
-    //    const response = await axios.post<IProduct>(config.productsUrl, product)
-       const response = await axios.post<IProduct>(config.productsUrl, formData)
-       const addedProduct = response.data 
-       console.log("addedProduct after came back from server", addedProduct);
-       console.log('product id: ' + addedProduct.id)
+    //    console.log(product)
+    // //   this line is sufficient:  await axios.post<IProduct>(config.productsUrl, product)
+    //               //in the generic I tell what the server will give me back (not what Im sending)
+    // //    const response = await axios.post<IProduct>(config.productsUrl, product)
+    //    const response = await axios.post<IProduct>(config.productsUrl, formData)
+    //    const addedProduct = response.data 
+    //    console.log("addedProduct after came back from server", addedProduct);
+    //    console.log('product id: ' + addedProduct.id)
+
+    await productsService.addNewProduct(product)
+    alert("Product has been added!");
+
 
        navigate('/products')
    
@@ -59,14 +67,14 @@ async function submit(product: IProduct) {
                  <TextField className="TextBox" label="מחיר:" type="number" variant="outlined" {...register('price',{
                 required: {value: true,  message: 'חסר מחיר'},
                 min: {value: 0, message: 'מחיר לא יכול להיות שלילי'},
-                max: {value: 100, message: 'מחיר לא יכול לעבור 1000'},
+                max: {value: 1000, message: 'מחיר לא יכול לעבור 1000'},
                  })} />
                 <Typography className="MoveLeft" variant="body1" component="span">{formState.errors.price?.message}</Typography>
 
              <TextField className="TextBox" label="מלאי:" type="number" variant="outlined" {...register('stock', {
                 required: {value: true, message: 'חסר מלאי'},
                 min: {value: 0, message: 'מלאי לא יכול להיות שלילי'},
-                max: {value: 100, message: 'מלאי לא יכול לעבור 1000'}
+                max: {value: 1000, message: 'מלאי לא יכול לעבור 1000'}
              })}/>
              <Typography className="MoveLeft" variant="body1" component="span">{formState.errors.stock?.message}</Typography>
 

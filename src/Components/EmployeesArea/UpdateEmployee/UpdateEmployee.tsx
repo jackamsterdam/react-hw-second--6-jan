@@ -1,3 +1,8 @@
+import { useParams } from "react-router-dom";
+import "./UpdateEmployee.css";
+
+// we always do the addproduct first and just copy the update product to here 
+
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
@@ -5,38 +10,42 @@ import { useNavigate } from "react-router-dom";
 import { IEmployee } from "../../../Models/EmployeeModel";
 import employeesService from "../../../Services/EmployeesService";
 import config from "../../../Utils/Config";
-import "./AddEmployee.css";
+import {useEffect} from 'react'
 
-function AddEmployee(): JSX.Element {
+function UpdateEmployee(): JSX.Element {
 
-    const { register, handleSubmit, formState } = useForm<IEmployee>()
+    
+    const params = useParams()
+    const id = Number(params.id)
+
+
+    const { register, handleSubmit, formState, setValue } = useForm<IEmployee>()
     const navigate = useNavigate()
 
-    async function submit(employee: IEmployee) {
-        //dont forget second parameter
+    useEffect(() => {
+   employeesService.getOneEmployee(id)
+   .then(employee => {
+    setValue('firstName', employee.firstName)
+    setValue('lastName', employee.lastName)
+    setValue('title', employee.title)
+    setValue('country', employee.country)
+    setValue('city', employee.city)
+    setValue('birthDate', employee.birthDate)
+   })
+   .catch(err => alert(err.message))
+  
+       
+   
 
+
+    }, [])
+
+    async function submit(employee: IEmployee) {
        
         try {
-            // old: 
-            // const formData = new FormData()
-            // formData.append('firstName', employee.firstName)
-            // formData.append('lastName', employee.lastName)
-            // formData.append('title', employee.title)
-            // formData.append('country', employee.country)
-            // formData.append('city', employee.city)
-            // formData.append('birthDate', employee.birthDate.toString())
-            // formData.append('image', employee.image.item(0))
-
-
-            // console.log(employee)
-            // // const response = await axios.post<IEmployee>(config.employeeUrl, employee)
-            // const response = await axios.post<IEmployee>(config.employeeUrl, formData)
-            // const addedEmployee = response.data
-            // console.log("addedProduct", addedEmployee);
-
-            // new from services: 
-               employeesService.addEmployee(employee)
-               alert('Employee has been added!')
+               employee.id = id
+               await employeesService.updateEmployee(employee)
+               alert('Employee has been updated!')
                
 
             navigate('/employees')
@@ -49,10 +58,9 @@ function AddEmployee(): JSX.Element {
 
 
     return (
-        <div className="AddEmployee Box">
+        <div className="UpdateEmployee Box">
             <form onSubmit={handleSubmit(submit)}>
-                <h3>הוסף עובד</h3>
-            
+            <h3>עריכת עובד</h3>
 
                 <label htmlFor="firstName">שם:</label>
                 <input type="text" id="firstName" {...register('firstName', {
@@ -105,7 +113,7 @@ function AddEmployee(): JSX.Element {
                 {/* lol register not required dont confuse  */}
                 <input type="file" accept="image/*" {...register('image')} />
 
-                <button>הוסף</button>
+                <button>עדכן עובד</button>
                 {/* איך הפורם יודע אם יש יותר משתי כפתורים?
 והאם לעשות את הכפתור שאוטומטי יעזוב את הפורם חזרה לעובדים ובאותה זמן יעשה סאבמיט האם הכפתור זה אותה כפתור או כפתור אחרת צריכה להיות ? */}
                 {/* תשובה navigate('/employees') */}
@@ -118,4 +126,4 @@ function AddEmployee(): JSX.Element {
     );
 }
 
-export default AddEmployee;
+export default UpdateEmployee;

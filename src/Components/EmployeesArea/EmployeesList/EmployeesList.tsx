@@ -6,6 +6,7 @@ import config from "../../../Utils/Config";
 import EmployeeCard from '../EmployeeCard/EmployeeCard'
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
+import employeesService from '../../../Services/EmployeesService'
 
 
 function EmployeesList(): JSX.Element {
@@ -14,10 +15,17 @@ function EmployeesList(): JSX.Element {
 
     useEffect(() => {
 
-        (async function() {
-          const response = await axios.get<IEmployee[]>(config.employeeUrl)
-          setEmployees(response.data)
-        })()
+
+        //old:
+        // (async function() {
+        //   const response = await axios.get<IEmployee[]>(config.employeeUrl)
+        //   setEmployees(response.data)
+        // })()
+
+        // new: 
+        employeesService.fetchEmployees()
+        .then(employees => setEmployees(employees) )
+        .catch(err => alert(err.message))
     },[])
 
 

@@ -1,0 +1,22 @@
+.UpdateEmployee form {
+	width: 250px;
+}
+
+
+.UpdateEmployee input {
+width: 100%;
+box-sizing: border-box;
+margin: 0 0 20px 0;
+}
+
+.UpdateEmployee button {
+    width: 100%;
+    margin: 10px 0 20px 0;
+    
+}
+
+.UpdateEmployee span {
+    color: red;
+    margin: 0 20px;
+    position: absolute;
+}
