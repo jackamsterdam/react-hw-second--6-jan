@@ -86,7 +86,8 @@ async function submit(product: IProduct) {
 
             <Typography className="MoveLeft" variant="body1" component="span">{formState.errors.image?.message}</Typography>
 
-                <button>הקלק להוספת מוצר</button>
+                {/* <button>הקלק להוספת מוצר</button> */}
+                <Button variant="contained" color="primary" type="submit">הקלק להוספת מוצר</Button>  
           </form>
 
           <NavLink to={'/products'}>חזור</NavLink>

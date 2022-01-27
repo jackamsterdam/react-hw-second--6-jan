@@ -14,9 +14,20 @@ import AddEmployee from "../../EmployeesArea/AddEmployee/AddEmployee";
 import UpdateEmployee from "../../EmployeesArea/UpdateEmployee/UpdateEmployee";
 import ShoeOrder from '../../OrdersArea/ShoeOrder/ShoeOrder'
 
+import Register from '../../AuthArea/Register/Register'
+import Login from '../../AuthArea/Login/Login'
+import Logout from '../../AuthArea/Logout/Logout'
+
 function Routing(): JSX.Element {
     return (
         <Routes>
+
+          <Route path="/register" element={<Register/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/logout" element={<Logout/>} />
+
+
+
           <Route path="/home" element={<Home/>}/>
           {/* <Route path="/" element={<Home/>}/> */}
           <Route path="/products" element={<ProductList/>} />

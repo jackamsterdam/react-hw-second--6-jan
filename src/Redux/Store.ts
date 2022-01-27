@@ -1,6 +1,7 @@
 import {combineReducers, createStore} from 'redux'
 import { productsReducer } from './ProductsState'
 import { employeesReducer } from './EmployeesState'
+import { authReducer } from './AuthState'
 
 
 
@@ -25,7 +26,8 @@ The reducers are combined into a single object and exported.
 
 const reducers = combineReducers({
     productsState: productsReducer,
-    employeesState: employeesReducer
+    employeesState: employeesReducer,
+    authState: authReducer
 })
 
 /* The above code is creating a store that will be used to store the state of our application. */

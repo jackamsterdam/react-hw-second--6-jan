@@ -1,0 +1,21 @@
+.Login form {
+	width: 450px;
+    padding: 20px;
+    margin: 20px;
+}
+
+/* .Register input {
+    width: 100%
+} */
+
+
+.Login .Headline {
+    text-align: center;
+}
+
+.Login .TextBox {
+  width: 100%;
+  margin: 5px 0;
+  /* text-align: right; */
+
+}

@@ -9,6 +9,9 @@ class DevelopmentConfig extends Config {
   productsImageUrl = 'http://localhost:3030/api/products/images/'
   employeeUrl = 'http://localhost:3030/api/employees/'
   employeeImageUrl = 'http://localhost:3030/api/employees/images/'
+
+  registerUrl = 'http://localhost:3030/api/auth/register/'
+  loginUrl = 'http://localhost:3030/api/auth/login/'
 }
 
 class ProductionConfig extends Config {
@@ -16,6 +19,9 @@ class ProductionConfig extends Config {
     productsImageUrl = 'http://www.northwind.com/api/products/images/'
     employeeUrl = 'http://www.northwind.com/api/employees/'
     employeeImageUrl = 'http://www.northwind.com/api/employees/images/'
+
+    registerUrl = 'http://www.northwind.com/api/auth/register/'
+    loginUrl = 'http://www.northwind.com/api/auth/login/'
 }
 
 
