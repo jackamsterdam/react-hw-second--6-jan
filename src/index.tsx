@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import interceptorsService from './Services/InterceptorsService'
 
 interceptorsService.createInterceptors()
-
+// dont forget to open backend northwind server! 
 ReactDOM.render(
   <React.StrictMode>
    <BrowserRouter>

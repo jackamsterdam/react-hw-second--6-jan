@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
 import employeesService from "../../../Services/EmployeesService";
+import notify from "../../../Services/NotifyService";
 
 function EmployeeDetails(): JSX.Element {
 
@@ -33,7 +34,7 @@ function EmployeeDetails(): JSX.Element {
         // new: 
         employeesService.getOneEmployee(id)
         .then(employee => setEmployee(employee))
-        .catch(err => alert(err.message))
+        .catch(err => notify.error(err))
 //!Again catch/????????????????????????????????????????????
     //   }
     //   catch(err: any) {
@@ -53,7 +54,7 @@ function EmployeeDetails(): JSX.Element {
     //! what about try catch here ??? 
 
 
-      alert('העובד/ת נמחק/ה')
+      notify.success('העובד/ת נמחק/ה')
       navigate('/employees')
   }
 

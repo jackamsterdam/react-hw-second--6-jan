@@ -2,6 +2,7 @@ import {combineReducers, createStore} from 'redux'
 import { productsReducer } from './ProductsState'
 import { employeesReducer } from './EmployeesState'
 import { authReducer } from './AuthState'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 
 
@@ -31,8 +32,12 @@ const reducers = combineReducers({
 })
 
 /* The above code is creating a store that will be used to store the state of our application. */
-const store = createStore(reducers)
-
+// const store = createStore(reducers)
+const store = createStore(reducers, composeWithDevTools())  //! delete this for production
+// let options = {
+//   trace: true
+// }
+// const store = createStore(reducers, composeWithDevTools(options)); // With Redux-DevTools
 export default store 
 
 

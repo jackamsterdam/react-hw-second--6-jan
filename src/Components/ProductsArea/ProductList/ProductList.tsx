@@ -7,6 +7,7 @@ import ProductCard from '../ProductCard/ProductCard'
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
 import productsService from '../../../Services/ProductsService'
+import notify from "../../../Services/NotifyService";
 // מישהו בנה את ייוזסטייט והוא בנה אותה ג,נרית 
 // so someone builds a class makes it generic and then when we use it I say what type of data it is 
 //so somone built useState made it generic and we i guess if its a calss we use an instawnce of it and give it the type we want in this case its IProduct[] 
@@ -34,7 +35,7 @@ function ProductList(): JSX.Element {
         // new: 
         productsService.fetchProducts()
         .then(products => setProducts(products))
-        .catch(err => alert(err.message))
+        .catch(err => notify.error(err))
 
 
     }, [])

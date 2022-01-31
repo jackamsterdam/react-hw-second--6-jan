@@ -7,6 +7,7 @@ import config from "../../../Utils/Config";
 import Loading from '../../SharedArea/Loading/Loading'
 import { NavLink } from "react-router-dom";
 import productsService from "../../../Services/ProductsService";
+import notify from "../../../Services/NotifyService";
 
 
 function ProductDetails(): JSX.Element {
@@ -40,7 +41,7 @@ useEffect(() => {
 
     productsService.getOneProduct(id)
     .then(product => setProduct(product))
-    .catch(err => alert(err.message))
+    .catch(err => notify.error(err))
    
 
 
@@ -59,11 +60,11 @@ async function deleteProduct() {
        
 
 
-        alert('המוצר נמחק')
+        notify.success('המוצר נמחק')
     
         navigate('/products')
     } catch(err: any) {
-        alert(err.message)
+        notify.error(err)
     }
 }
 

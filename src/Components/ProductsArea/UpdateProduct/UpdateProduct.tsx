@@ -7,6 +7,7 @@ import "./UpdateProduct.css";
 import { Typography, TextField, Button } from '@material-ui/core'
 import productsService from "../../../Services/ProductsService";
 import {useEffect} from 'react'
+import notify from "../../../Services/NotifyService";
 
 
 function UpdateProduct(): JSX.Element {
@@ -28,7 +29,7 @@ function UpdateProduct(): JSX.Element {
                setValue('price', product.price)
                setValue('stock', product.stock)
         })
-        .catch(err => alert(err.message))
+        .catch(err => notify.error(err))
 
 
     }, [])
@@ -42,7 +43,7 @@ function UpdateProduct(): JSX.Element {
             //add an id to product as a property becasue the user doesnt enter id when fills up the form
            product.id = id
             await productsService.updateProduct(product)
-            alert("Product has been updated!");
+            notify.success("המוצר התעדכן!");
 
 
 
@@ -50,6 +51,7 @@ function UpdateProduct(): JSX.Element {
 
         } catch (err: any) {
             console.log(err.message)
+            notify.error(err)
         }
 
     }

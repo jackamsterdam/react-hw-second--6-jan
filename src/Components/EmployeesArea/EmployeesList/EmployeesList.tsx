@@ -7,6 +7,7 @@ import EmployeeCard from '../EmployeeCard/EmployeeCard'
 import Loading from "../../SharedArea/Loading/Loading";
 import { NavLink } from "react-router-dom";
 import employeesService from '../../../Services/EmployeesService'
+import notify from "../../../Services/NotifyService";
 
 
 function EmployeesList(): JSX.Element {
@@ -25,7 +26,7 @@ function EmployeesList(): JSX.Element {
         // new: 
         employeesService.fetchEmployees()
         .then(employees => setEmployees(employees) )
-        .catch(err => alert(err.message))
+        .catch(err => notify.error(err))
     },[])
 
 

@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { Button, TextField, Typography } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
 import { ICredentials } from "../../../Models/CredentialsModel";
+import notify from "../../../Services/NotifyService";
+
+// import { Notyf } from "notyf"
+// let notification = new Notyf({duration: 4000, position: {x: "center", y: 'center'}})
 
 
 function Login(): JSX.Element {
@@ -14,18 +18,20 @@ function Login(): JSX.Element {
     const { register, handleSubmit, formState } = useForm<ICredentials>()
 
     async function submit(credentials: ICredentials) {
-
         try {
 
             console.log('in the submit of Login:', credentials)
             await authService.login(credentials)
-            alert('התחברת בהצלחה')
-
+            // alert('התחברת בהצלחה')
+            // notify.success('התחברת בהצלחה')
+            notify.success('התחברת בהצלחה')
+            // notification.success('using without class')
             navigate('/home')
 
 
         } catch (err: any) {
-            alert(err.message)
+            // alert(err.message)
+            notify.error(err)
 
         }
     }

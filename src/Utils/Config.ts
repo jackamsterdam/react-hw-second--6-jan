@@ -1,5 +1,5 @@
 //Development and Production Configuration
-
+//? Here I will add my backend server url: 
 class Config {
       // public supportPhone = "031234567";
 }
@@ -15,13 +15,23 @@ class DevelopmentConfig extends Config {
 }
 
 class ProductionConfig extends Config {
-    productsUrl = 'http://www.northwind.com/api/products/'
-    productsImageUrl = 'http://www.northwind.com/api/products/images/'
-    employeeUrl = 'http://www.northwind.com/api/employees/'
-    employeeImageUrl = 'http://www.northwind.com/api/employees/images/'
 
-    registerUrl = 'http://www.northwind.com/api/auth/register/'
-    loginUrl = 'http://www.northwind.com/api/auth/login/'
+  // this is fake demo: 
+    // productsUrl = 'http://www.northwind.com/api/products/'
+    // productsImageUrl = 'http://www.northwind.com/api/products/images/'
+    // employeeUrl = 'http://www.northwind.com/api/employees/'
+    // employeeImageUrl = 'http://www.northwind.com/api/employees/images/'
+
+    // registerUrl = 'http://www.northwind.com/api/auth/register/'
+    // loginUrl = 'http://www.northwind.com/api/auth/login/'
+
+    productsUrl =  'http://localhost:3030/api/products/'
+    productsImageUrl = 'http://localhost:3030/api/products/images/'
+    employeeUrl = 'http://localhost:3030/api/employees/'
+    employeeImageUrl = 'http://localhost:3030/api/employees/images/'
+  
+    registerUrl = 'http://localhost:3030/api/auth/register/'
+    loginUrl = 'http://localhost:3030/api/auth/login/'
 }
 
 

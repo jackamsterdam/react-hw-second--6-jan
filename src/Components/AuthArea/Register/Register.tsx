@@ -5,6 +5,7 @@ import authService from "../../../Services/AuthService";
 import { useNavigate } from "react-router-dom";
 import { Button, Checkbox, FormControlLabel, TextField, Typography } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
+import notify from "../../../Services/NotifyService";
 
 
 function Register(): JSX.Element {
@@ -18,13 +19,13 @@ function Register(): JSX.Element {
 
             console.log('in the submit of register:', user)
             await authService.register(user)
-            alert('נרשמת בהצלחה')
+            notify.success('נרשמת בהצלחה')
 
             navigate('/home')
 
 
         } catch (err: any) {
-            alert(err.message)
+            notify.error(err)
 
         }
     }

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { IEmployee } from "../../../Models/EmployeeModel";
 import employeesService from "../../../Services/EmployeesService";
+import notify from "../../../Services/NotifyService";
 import config from "../../../Utils/Config";
 import "./AddEmployee.css";
 
@@ -36,7 +37,7 @@ function AddEmployee(): JSX.Element {
 
             // new from services: 
                employeesService.addEmployee(employee)
-               alert('Employee has been added!')
+               notify.success('Employee has been added!')
                
 
             navigate('/employees')
@@ -44,6 +45,7 @@ function AddEmployee(): JSX.Element {
         }
         catch (err: any) {
             console.log(err.message)
+            notify.error(err)
         }
     }
 

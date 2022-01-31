@@ -7,6 +7,7 @@ import "./AddProduct.css";
 // import css from  "./AddProduct.module.css";
 import {Typography, TextField, Button} from '@material-ui/core'
 import productsService from "../../../Services/ProductsService";
+import notify from "../../../Services/NotifyService";
 
 function AddProduct(): JSX.Element {
 
@@ -38,13 +39,15 @@ async function submit(product: IProduct) {
     //    console.log('product id: ' + addedProduct.id)
 
     await productsService.addNewProduct(product)
-    alert("Product has been added!");
+    notify.success('המוצר התווסף!')
+    // alert("Product has been added!");
 
 
        navigate('/products')
    
     } catch (err: any) {
-        console.log(err.message)
+        // console.log(err.message)
+        notify.error(err)
     }
 
 }

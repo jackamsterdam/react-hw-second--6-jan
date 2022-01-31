@@ -11,6 +11,7 @@ import { IEmployee } from "../../../Models/EmployeeModel";
 import employeesService from "../../../Services/EmployeesService";
 import config from "../../../Utils/Config";
 import {useEffect} from 'react'
+import notify from "../../../Services/NotifyService";
 
 function UpdateEmployee(): JSX.Element {
 
@@ -32,7 +33,7 @@ function UpdateEmployee(): JSX.Element {
     setValue('city', employee.city)
     setValue('birthDate', employee.birthDate)
    })
-   .catch(err => alert(err.message))
+   .catch(err => notify.error(err))
   
        
    
@@ -45,7 +46,7 @@ function UpdateEmployee(): JSX.Element {
         try {
                employee.id = id
                await employeesService.updateEmployee(employee)
-               alert('Employee has been updated!')
+               notify.success('העובד עודכן בהצלחה')
                
 
             navigate('/employees')
@@ -53,6 +54,7 @@ function UpdateEmployee(): JSX.Element {
         }
         catch (err: any) {
             console.log(err.message)
+            notify.error(err)
         }
     }
 
