@@ -7,7 +7,7 @@ function Header(): JSX.Element {
         <div className="Header">
             <Logo />
             <AuthMenu/>
-			<h1>חנות הנעליים המגניבה ביותר בארץ</h1>
+			<h1>🚀חנות הנעליים המגניבה ביותר בארץ</h1>
         </div>
     );
 }
